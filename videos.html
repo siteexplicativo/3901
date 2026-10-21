@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vídeos 3901</title>
+</head>
+
+<body>
+<center>
+
+  <video id="videoPlayer" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls>
+    <source id="videoSource" src="videos/video1.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos.
+  </video><br><br>
+
+  <button onclick="v = v > 1 ? v - 1 : totalVideos; atualizarVideo()">❮</button>
+  
+  <button onclick="v < totalVideos ? v++ : v = 1; atualizarVideo()">❯</button>
+
+  <br><br>
+
+  <a id="btnDownload" href="videos/video1.mp4" download="video1.mp4">
+    <button>Baixar Vídeo</button>
+  </a>
+
+  <br><br><br>
+
+  <!-- Botão para voltar para a página de fotos -->
+  <a href="index.html">
+    <button>Voltar para Fotos</button>
+  </a>
+
+  <script>
+    let v = 1;
+    let totalVideos = 10; // Altere para a quantidade total de vídeos na pasta "videos"
+
+    function atualizarVideo() {
+      let caminho = 'videos/video' + v + '.mp4';
+      let player = document.getElementById('videoPlayer');
+      let source = document.getElementById('videoSource');
+      
+      source.src = caminho;
+      player.load(); // Recarrega o player com o novo vídeo
+      
+      let btn = document.getElementById('btnDownload');
+      btn.href = caminho;
+      btn.download = 'video' + v + '.mp4';
+    }
+  </script>
+
+</center>
+</body>
+</html>
