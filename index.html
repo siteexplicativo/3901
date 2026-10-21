@@ -1,21 +1,33 @@
 <!doctype html>
 <html lang="pt-BR">
+
+
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fotos 3901</title>
 </head>
+
+
 <body>
+
+
+
   <button onclick="i = i > 1 ? i - 1 : 490; atualizarFoto()">❮</button>
   <img id="foto" src="foto/foto1.jpg" width="400">
   <button onclick="i = i < 490 ? i + 1 : 1; atualizarFoto()">❯</button>
 
   <br><br>
 
-  <!-- Botão de Download -->
+
+
   <a id="btnDownload" href="foto/foto1.jpg" download="foto1.jpg">
     <button>Baixar Foto</button>
   </a>
+
+
+
 
   <script>
     let i = 1;
@@ -23,16 +35,18 @@
     function atualizarFoto() {
       let caminho = 'foto/foto' + i + '.jpg';
       
-      // Atualiza a imagem exibida
+  
       foto.src = caminho;
-      
-      // Atualiza o link e o nome do arquivo no botão de download
+    
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;
       btn.download = 'foto' + i + '.jpg';
     }
   </script>
+
+
+
+
 </body>
 </html>
 
-<--! colocar um slider ou deslizador ou botao de troca de fotos, mix d efotos -->
