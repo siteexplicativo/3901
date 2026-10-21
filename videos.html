@@ -10,8 +10,8 @@
 <body>
 <center>
 
-  <video id="videoPlayer" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls>
-    <source id="videoSource" src="videos/video1.mp4" type="video/mp4">
+  <!-- O src agora fica direto na tag video -->
+  <video id="videoPlayer" src="videos/video1.mp4" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls>
     Seu navegador não suporta vídeos.
   </video><br><br>
 
@@ -27,22 +27,21 @@
 
   <br><br><br>
 
-  <!-- Botão para voltar para a página de fotos -->
   <a href="index.html">
     <button>Voltar para Fotos</button>
   </a>
 
   <script>
     let v = 1;
-    let totalVideos = 10; // Altere para a quantidade total de vídeos na pasta "videos"
+    let totalVideos = 10; // Altere para a quantidade exata de vídeos na pasta "videos"
 
     function atualizarVideo() {
       let caminho = 'videos/video' + v + '.mp4';
       let player = document.getElementById('videoPlayer');
-      let source = document.getElementById('videoSource');
       
-      source.src = caminho;
-      player.load(); // Recarrega o player com o novo vídeo
+      // Altera o src diretamente e força o play/load
+      player.src = caminho;
+      player.load();
       
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;
