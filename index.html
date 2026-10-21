@@ -9,9 +9,9 @@
 
 <body>
 <center>
-
+<br><br>
   <img id="foto" src="foto/foto1.jpg" style="max-width: 100%; width: 400px; height: 300px; object-fit: contain;"><br><br>
-
+<span id="contador" style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold;">1 / 490</span><br>
   <button onclick="i = i > 1 ? i - 1 : 490; atualizarFoto()">❮</button>
   
   <button onclick="i = i < 490 ? i + 1 : 1; atualizarFoto()">❯</button>
@@ -21,7 +21,7 @@
   <a id="btnDownload" href="foto/foto1.jpg" download="foto1.jpg">
     <button>Baixar</button>
   </a>
-
+<br><br>
 <!-- Botão para abrir a página de vídeos -->
  <br> <a href="videos.html">
     <button>Ver Vídeos</button>
@@ -31,10 +31,13 @@
   <script>
     let i = 1;
 
-    function atualizarFoto() {
+   function atualizarFoto() {
       let caminho = 'foto/foto' + i + '.jpg';
       
       foto.src = caminho;
+      
+      // Atualiza o texto do contador
+      document.getElementById('contador').innerText = i + ' / 490';
       
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;

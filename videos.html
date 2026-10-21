@@ -11,9 +11,10 @@
 <center>
  
   <video id="videoPlayer" src="videos/video2_sem_audio.mp4" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls playsinline preload="auto">
+
     Seu navegador não suporta vídeos.
   </video><br><br>
-
+<span id="contadorVideo" style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold;">1 / 10</span><br>
   <button onclick="mudarVideo(-1)">❮</button>
   <button onclick="mudarVideo(1)">❯</button>
 
@@ -34,13 +35,15 @@
     let totalVideos = 10; // Altere para a quantidade total de vídeos
 
     function atualizarVideo() {
-      // Monta o nome exato: "video" + número + "_sem_audio.mp4"
       let nomeArquivo = 'video' + v + '_sem_audio.mp4';
       let caminho = 'videos/' + nomeArquivo;
       let player = document.getElementById('videoPlayer');
       
       player.src = caminho;
       player.load();
+      
+      // Atualiza o contador de vídeos
+      document.getElementById('contadorVideo').innerText = v + ' / ' + totalVideos;
       
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;
