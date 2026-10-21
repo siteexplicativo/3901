@@ -10,18 +10,16 @@
 <body>
 <center>
 
-  <!-- O src agora fica direto na tag video -->
-  <video id="videoPlayer" src="videos/video1.mp4" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls>
+  <video id="videoPlayer" src="" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls>
     Seu navegador não suporta vídeos.
   </video><br><br>
 
-  <button onclick="v = v > 1 ? v - 1 : totalVideos; atualizarVideo()">❮</button>
-  
-  <button onclick="v < totalVideos ? v++ : v = 1; atualizarVideo()">❯</button>
+  <button onclick="mudarVideo(-1)">❮</button>
+  <button onclick="mudarVideo(1)">❯</button>
 
   <br><br>
 
-  <a id="btnDownload" href="videos/video1.mp4" download="video1.mp4">
+  <a id="btnDownload" href="#" download="">
     <button>Baixar Vídeo</button>
   </a>
 
@@ -32,21 +30,48 @@
   </a>
 
   <script>
-    let v = 1;
-    let totalVideos = 10; // Altere para a quantidade exata de vídeos na pasta "videos"
+    // LISTA DE VÍDEOS: Coloque entre aspas o nome exato de cada arquivo que está na pasta "videos" (sem o .mp4)
+    let listaVideos = [
+      "video1",
+      "video2_sem_audio",
+      "outro_video_legal",
+      "video_exemplo"
+    ];
+
+    let v = 0; // Começa no primeiro item da lista (posição 0)
 
     function atualizarVideo() {
-      let caminho = 'videos/video' + v + '.mp4';
+      let nomeArquivo = listaVideos[v] + ".mp4";
+      let caminho = "videos/" + nomeArquivo;
       let player = document.getElementById('videoPlayer');
       
-      // Altera o src diretamente e força o play/load
+      // Atualiza o player
       player.src = caminho;
       player.load();
       
+      // Atualiza o botão de download
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;
-      btn.download = 'video' + v + '.mp4';
+      btn.download = nomeArquivo;
     }
+
+    function mudarVideo(direcao) {
+      v += direcao;
+
+      // Se passar do último, volta pro primeiro. Se for menor que 0, vai para o último.
+      if (v >= listaVideos.length) {
+        v = 0;
+      } else if (v < 0) {
+        v = listaVideos.length - 1;
+      }
+
+      atualizarVideo();
+    }
+
+    // Carrega o primeiro vídeo assim que a página abre
+    window.onload = function() {
+      atualizarVideo();
+    };
   </script>
 
 </center>
