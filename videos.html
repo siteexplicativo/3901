@@ -10,8 +10,7 @@
 <body>
 <center>
 
-  <!-- Adicionado playsinline e preload para facilitar o carregamento no Android -->
-  <video id="videoPlayer" src="" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls playsinline preload="auto">
+  <video id="videoPlayer" src="videos/video2_sem_audio.mp4" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls playsinline preload="auto">
     Seu navegador não suporta vídeos.
   </video><br><br>
 
@@ -20,7 +19,7 @@
 
   <br><br>
 
-  <a id="btnDownload" href="#" download="">
+  <a id="btnDownload" href="videos/video2_sem_audio.mp4" download="video2_sem_audio.mp4">
     <button>Baixar Vídeo</button>
   </a>
 
@@ -31,18 +30,13 @@
   </a>
 
   <script>
-    // Coloque aqui os nomes exatos dos seus arquivos (sem o .mp4)
-    let listaVideos = [
-      "video1",
-      "video2_sem_audio",
-      "3"
-    ];
-
-    let v = 0;
+    let v = 2; // Começa no número 2 (ou 1, dependendo de qual é o primeiro)
+    let totalVideos = 10; // Altere para a quantidade total de vídeos
 
     function atualizarVideo() {
-      let nomeArquivo = listaVideos[v] + ".mp4";
-      let caminho = "videos/" + nomeArquivo;
+      // Monta o nome exato: "video" + número + "_sem_audio.mp4"
+      let nomeArquivo = 'video' + v + '_sem_audio.mp4';
+      let caminho = 'videos/' + nomeArquivo;
       let player = document.getElementById('videoPlayer');
       
       player.src = caminho;
@@ -54,20 +48,14 @@
     }
 
     function mudarVideo(direcao) {
-      v += direcao;
-
-      if (v >= listaVideos.length) {
-        v = 0;
-      } else if (v < 0) {
-        v = listaVideos.length - 1;
+      if (direcao === 1) {
+        v = v < totalVideos ? v + 1 : 2; // Se passar do total, volta para o primeiro (2)
+      } else {
+        v = v > 2 ? v - 1 : totalVideos;
       }
 
       atualizarVideo();
     }
-
-    window.onload = function() {
-      atualizarVideo();
-    };
   </script>
 
 </center>
