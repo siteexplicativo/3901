@@ -11,16 +11,26 @@
   <button onclick="i = i < 490 ? i + 1 : 1; foto.src = 'foto/foto' + i + '.jpg'">❯</button>
 
   <script>
-    let i = 1;
+    function atualizarFoto() {
+      let caminho = 'foto/foto' + i + '.jpg';
+      
+      // Atualiza a imagem exibida
+      foto.src = caminho;
+      
+      // Atualiza o link e o nome do arquivo no botão de download
+      let btn = document.getElementById('btnDownload');
+      btn.href = caminho;
+      btn.download = 'foto' + i + '.jpg';
+    }
   </script>
-  <p><a href="https://raw.githubusercontent.com/siteexplicativo/3901/main/base.mp3" download>teste</a></p>
+  <!-- <p><a href="https://raw.githubusercontent.com/siteexplicativo/3901/main/base.mp3" download>teste</a></p>
   
   
   <p><a href="https://raw.githubusercontent.com/siteexplicativo/3901/main/base.mp3" download>Fotos antes</a></p>
   
   <p><a href="" download>teste</a></p>
   <p>Fotos após</p>
-  <p>Vídeos</p>
+  <p>Vídeos</p> -->
 </body>
 </html>
 
