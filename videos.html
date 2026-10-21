@@ -10,7 +10,8 @@
 <body>
 <center>
 
-  <video id="videoPlayer" src="" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls>
+  <!-- Adicionado playsinline e preload para facilitar o carregamento no Android -->
+  <video id="videoPlayer" src="" width="400" style="max-width: 100%; height: 300px; object-fit: contain;" controls playsinline preload="auto">
     Seu navegador não suporta vídeos.
   </video><br><br>
 
@@ -30,26 +31,23 @@
   </a>
 
   <script>
-    // LISTA DE VÍDEOS: Coloque entre aspas o nome exato de cada arquivo que está na pasta "videos" (sem o .mp4)
+    // Coloque aqui os nomes exatos dos seus arquivos (sem o .mp4)
     let listaVideos = [
       "video1",
       "video2_sem_audio",
-      "outro_video_legal",
-      "video_exemplo"
+      "3"
     ];
 
-    let v = 0; // Começa no primeiro item da lista (posição 0)
+    let v = 0;
 
     function atualizarVideo() {
       let nomeArquivo = listaVideos[v] + ".mp4";
       let caminho = "videos/" + nomeArquivo;
       let player = document.getElementById('videoPlayer');
       
-      // Atualiza o player
       player.src = caminho;
       player.load();
       
-      // Atualiza o botão de download
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;
       btn.download = nomeArquivo;
@@ -58,7 +56,6 @@
     function mudarVideo(direcao) {
       v += direcao;
 
-      // Se passar do último, volta pro primeiro. Se for menor que 0, vai para o último.
       if (v >= listaVideos.length) {
         v = 0;
       } else if (v < 0) {
@@ -68,7 +65,6 @@
       atualizarVideo();
     }
 
-    // Carrega o primeiro vídeo assim que a página abre
     window.onload = function() {
       atualizarVideo();
     };
