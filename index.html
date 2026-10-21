@@ -6,11 +6,20 @@
   <title>Fotos 3901</title>
 </head>
 <body>
-      <button onclick="i = i > 1 ? i - 1 : 490; foto.src = 'foto/foto' + i + '.jpg'">❮</button>
+  <button onclick="i = i > 1 ? i - 1 : 490; atualizarFoto()">❮</button>
   <img id="foto" src="foto/foto1.jpg" width="400">
-  <button onclick="i = i < 490 ? i + 1 : 1; foto.src = 'foto/foto' + i + '.jpg'">❯</button>
+  <button onclick="i = i < 490 ? i + 1 : 1; atualizarFoto()">❯</button>
+
+  <br><br>
+
+  <!-- Botão de Download -->
+  <a id="btnDownload" href="foto/foto1.jpg" download="foto1.jpg">
+    <button>Baixar Foto</button>
+  </a>
 
   <script>
+    let i = 1;
+
     function atualizarFoto() {
       let caminho = 'foto/foto' + i + '.jpg';
       
@@ -23,14 +32,6 @@
       btn.download = 'foto' + i + '.jpg';
     }
   </script>
-  <!-- <p><a href="https://raw.githubusercontent.com/siteexplicativo/3901/main/base.mp3" download>teste</a></p>
-  
-  
-  <p><a href="https://raw.githubusercontent.com/siteexplicativo/3901/main/base.mp3" download>Fotos antes</a></p>
-  
-  <p><a href="" download>teste</a></p>
-  <p>Fotos após</p>
-  <p>Vídeos</p> -->
 </body>
 </html>
 
