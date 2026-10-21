@@ -5,105 +5,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fotos 3901</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      box-sizing: border-box;
-      background-color: #f4f4f9;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      max-width: 400px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .controles {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    button {
-      padding: 12px 24px;
-      font-size: 18px;
-      border: none;
-      border-radius: 6px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button:active {
-      background-color: #0056b3;
-    }
-
-    .download-container {
-      margin-top: 15px;
-    }
-
-    .btn-download {
-      background-color: #28a745;
-      font-size: 16px;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-download:active {
-      background-color: #1e7e34;
-    }
-  </style>
 </head>
 
 <body>
+<center>
 
-  <div class="container">
-    <img id="foto" src="foto/foto1.jpg" alt="Foto">
+  <img id="foto" src="foto/foto1.jpg" style="max-width: 100%; width: 400px; height: 300px; object-fit: contain;"><br><br>
 
-    <div class="controles">
-      <button onclick="i = i > 1 ? i - 1 : 490; atualizarFoto()">❮</button>
-      <button onclick="i = i < 490 ? i + 1 : 1; atualizarFoto()">❯</button>
-    </div>
+  <button onclick="i = i > 1 ? i - 1 : 490; atualizarFoto()">❮</button>
+  
+  <button onclick="i = i < 490 ? i + 1 : 1; atualizarFoto()">❯</button>
 
-    <div class="download-container">
-      <a id="btnDownload" href="foto/foto1.jpg" download="foto1.jpg">
-        <button class="btn-download">Baixar</button>
-      </a>
-    </div>
-  </div>
+  <br><br>
+
+  <a id="btnDownload" href="foto/foto1.jpg" download="foto1.jpg">
+    <button>Baixar</button>
+  </a>
 
   <script>
     let i = 1;
 
     function atualizarFoto() {
       let caminho = 'foto/foto' + i + '.jpg';
-
-      document.getElementById('foto').src = caminho;
-
+      
+      foto.src = caminho;
+      
       let btn = document.getElementById('btnDownload');
       btn.href = caminho;
       btn.download = 'foto' + i + '.jpg';
     }
   </script>
 
+</center>
 </body>
-
 </html>
